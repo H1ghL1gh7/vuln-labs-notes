@@ -47,6 +47,12 @@ GET http://ctf.eagleslab.com:41136/vul/csrf/csrfget/csrf_get_edit.php?
 
 把 PoC 部署到攻击者服务器，受害者访问该 HTML → 自动提交 → 改信息成功。
 
+### 1.4 实测结果
+
+Burp 生成 PoC 页面在浏览器触发后，页面自动跳转到个人信息页 + 手机号已被修改：
+
+![CSRF PoC 触发后手机号被改](./screenshots/01-csrf-poc-success.png)
+
 ## 2. CSRF(POST) — 自动提交表单
 
 请求方式换成 POST，思路一致：构造自动提交表单的 PoC 页面，受害者访问即触发。
